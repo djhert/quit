@@ -10,7 +10,7 @@ const (
 	//MINOR version of library
 	MINOR = "0"
 	//RELEASE version of library
-	RELEASE = "1"
+	RELEASE = "2"
 )
 
 //Info returns a string with the name of the library, and the version
