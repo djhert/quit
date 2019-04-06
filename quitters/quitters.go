@@ -1,4 +1,4 @@
-package quitter
+package quitters
 
 var (
 	quits []func()
