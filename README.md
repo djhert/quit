@@ -3,7 +3,7 @@ Package **quit** is a cross-platform implementation to listen for process calls 
 
 Listens for all POSIX signals that would result in the termination of the application, and SIGUSR2 for restart.
 
-**NOTE:** Only _INTERRUPT_ and _KILL_ quit are available on Windows
+**NOTE:** Only _INTERRUPT_ and _KILL_ signals are available on Windows
 
 The following signals are listend for, and what function they run.
 
@@ -23,8 +23,7 @@ SIGKILL (Signal Kill)
 SIGUSR2 (Signal User 2)
 ```
 
-## Usage
-**Example:**
+## Example
 ```go
 package main
 
@@ -61,7 +60,7 @@ In the above example, upon receiving any POSIX signal that would result in termi
 **_OR_**
 Upon receiving the _SIGUSR2_ signal, the function `myRestart()` will trigger.
 
-The function `myQuit()` is also called by defering `quit.Quit()`.  This is so your `myQuit()` function is called if the application is quit via a signal or normal lifecycle.
+The function `myQuit()` is also called here by defering `quit.Quit()`.  This is so your `myQuit()` function is called if the application is quit via a signal or normal lifecycle.  As `quit.Quit()` maintains its own 'state' it is able to start an application's quit cycle and will need to be called as part of the application's quit cycle to close the goroutine.
 
 **NOTE:** The _SIGUSR2_ signal is likely not available for Windows natively
 
